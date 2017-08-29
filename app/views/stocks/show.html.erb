@@ -1,0 +1,28 @@
+<% stock_quotes = @stock.stock_quotes.paginate(page: params[:page], per_page: 50) %>
+<h2><%= @stock.name %>'s Prices</h2>
+
+<% if stock_quotes.count > 0 %>
+  <%= will_paginate stock_quotes %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% stock_quotes.each do |quote| %>
+        <tr>
+          <td><%= link_to "$#{quote.amount} @ #{quote.created_at}", quote %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h5> None </h5><br>
+<% end %>
+<br>
+
+<%= link_to 'Edit', edit_exchange_stock_path(exchange_id: @exchange.id, id: @stock.id) %> |
+<%= link_to 'Back', stocks_path %>

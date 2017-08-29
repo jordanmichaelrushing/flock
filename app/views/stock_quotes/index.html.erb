@@ -1,0 +1,19 @@
+<h1>Stock Quotes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quote</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stock_quotes.each do |stock_quote| %>
+      <tr>
+        <td><%= link_to "#{stock_quote.amount} @ #{stock_quote.created_at}", stock_quote %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

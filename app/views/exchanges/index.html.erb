@@ -1,0 +1,26 @@
+<h1>Exchanges</h1>
+
+<%= will_paginate @exchanges %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exchanges.each do |exchange| %>
+      <tr>
+        <td><%= link_to exchange.name, exchange %></td>
+        <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
+        <td><%= link_to 'Destroy', exchange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exchange', new_exchange_path %>
